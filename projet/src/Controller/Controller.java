@@ -24,7 +24,7 @@ public class Controller {
     public void handleLaunchReceive() throws SocketException, UnknownHostException {
         System.out.println("Hello");
         InetAddress hostAddress = InetAddress.getByName("127.0.0.1");
-        DatagramSocket ds = new DatagramSocket(51999, hostAddress);
+        DatagramSocket ds = new DatagramSocket(69, hostAddress);
         byte[] buf = new byte[3000];
         DatagramPacket dp = new DatagramPacket(buf, buf.length);
 
@@ -32,12 +32,24 @@ public class Controller {
         try {
             ds.receive(dp);
 
-            File file = new File("C:/robots.txt");
-            FileInputStream fis = null;
-
             String rcvd = new String(dp.getData(), 0, dp.getLength()) + ", from address: "
                     + dp.getAddress() + ", port: " + dp.getPort();
             System.out.println(rcvd);
+
+
+            File file = new File(new String(dp.getData()));
+            FileInputStream fis = null;
+
+            fis = new FileInputStream(file);
+
+            /*System.out.println("Total file size to read (in bytes) : "
+                    + fis.available());
+
+            int content;
+            while ((content = fis.read()) != -1) {
+                // convert to char and display it
+                System.out.print((char) content);
+            }*/
 
             /*System.out.println("Hello");
             String rcvd = new String(dp.getData(), 0, dp.getLength()) + ", from address: "
