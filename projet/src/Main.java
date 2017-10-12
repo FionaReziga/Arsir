@@ -10,8 +10,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("View/main.fxml"));
-        primaryStage.setTitle("Accueil");
-        primaryStage.setScene(new Scene(root, 600, 600));
+        primaryStage.setTitle("Scénario du receiveFile() pour le protocle TFTP");
+        primaryStage.setScene(new Scene(root, 500, 134));
         primaryStage.show();
     }
 
